@@ -1,5 +1,5 @@
-// analizar el archivo que se leer· en ensamblador
-//DespuÈs de analizar el archivo, tenemos que crear la tabla de sÌmbolos
+// analizar el archivo que se leerÅEen ensamblador
+//DespuÈs de analizar el archivo, tenemos que crear la tabla de s˙äbolos
 
 #include "EnsambladorLi.h"
 #include <iostream>
@@ -115,5 +115,71 @@ bool load(string archivo)
 //Aqui debe de ir leyendo el archivo y guardar los comandos en una lista que despues se tranforman en bytes y exportarlo en un archivo .inz
 void run()
 {
+	map <string, int > Comandos;
 
+	Comandos["HALT"] = int(1);
+	Comandos["WR"] = int(1);
+	Comandos["WRC"] = int(3);
+	Comandos["WRI"] = int(3);
+	Comandos["WRD"] = int(3);
+	Comandos["WRS"] = int(3);
+	Comandos["WRAC"] = int(3);
+	Comandos["WRAI"] = int(3);
+	Comandos["WRAD"] = int(3);
+	Comandos["WRAS"] = int(3);
+	Comandos["PUSHC"] = int(3);
+	Comandos["PUSHI"] = int(3);
+	Comandos["PUSHD"] = int(3);
+	Comandos["PUSHS"] = int(3);
+	Comandos["PUSHKC"] = int(2);
+	Comandos["PUSHKI"] = int(5);
+	Comandos["PUSHKD"] = int(9);
+	Comandos["PUSHKS"] = int(1);
+	Comandos["PUSHAC"] = int(1);
+	Comandos["PUSHAI"] = int(1);
+	Comandos["PUSHAD"] = int(1);
+	Comandos["PUSHAS"] = int(1);
+	Comandos["POPC"] = int(1);
+	Comandos["POPI"] = int(1);
+	Comandos["POPD"] = int(1);
+	Comandos["POPS"] = int(1);
+	Comandos["POPAC"] = int(1);
+	Comandos["POPAI"] = int(1);
+	Comandos["POPAS"] = int(1);
+	Comandos["POPX"] = int(1);
+	Comandos["RDC"] = int(1);
+	Comandos["RDI"] = int(1);
+	Comandos["RDD"] = int(1);
+	Comandos["RDS"] = int(1);
+	Comandos["RDAC"] = int(1);
+	Comandos["RDAI"] = int(1);
+	Comandos["RDAD"] = int(1);
+	Comandos["RDAS"] = int(1);
+	Comandos["JMP"] = int(1);
+	Comandos["JEQ"] = int(1);
+	Comandos["JNE"] = int(1);
+	Comandos["JGT"] = int(1);
+	Comandos["JGE"] = int(1);
+	Comandos["JLT"] = int(1);
+	Comandos["JLE"] = int(1);
+	Comandos["STX"] = int(1);
+	Comandos["STKX"] = int(1);
+	Comandos["STY"] = int(1);
+	Comandos["STKY"] = int(1);
+	Comandos["INC"] = int(1);
+	Comandos["RED"] = int(1);
+	Comandos["ADD"] = int(1);
+	Comandos["SUB"] = int(1);
+	Comandos["MUL"] = int(1);
+	Comandos["DIV"] = int(1);
+	Comandos["MOD"] = int(1);
+	Comandos["CMP"] = int(1);
+	Comandos["DECC"] = int(1);
+	Comandos["DECI"] = int(1);
+	Comandos["DECD"] = int(1);
+	Comandos["DECS"] = int(1);
+	Comandos["DECAC"] = int(1);
+	Comandos["DECAI"] = int(1);
+	Comandos["DECAD"] = int(1);
+	Comandos["DECAS"] = int(1);
 }
