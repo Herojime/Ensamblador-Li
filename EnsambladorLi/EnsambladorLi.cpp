@@ -9,80 +9,133 @@ using namespace std;
 #pragma region Instrucciones
 
 #define HALT 0X0		//Finish.
-#define WR 0X1			//Writes a newline.
-#define WRC 0X2			//Writes a char.
-#define WRI 0X3			//Writes an int.
-#define WRD 0X4			//Writes a double.
-#define WRS 0X5			//Writes a string.
-#define PUSHC 0X6		//Inserts a char on top of the stack.
-#define PUSHI 0X7		//Inserts an int on top of the stack.
-#define PUSHD 0X8		//Inserts a double on top of the stack.
-#define PUSHS 0X9		//Inserts a string on top of the stack.
-#define PUSHKC 0XA		//Inserts a constant char on top of the stack.
-#define PUSHKI 0XB		//Inserts a constant int on top of the stack.
-#define PUSHKD 0XC		//Inserts a constant double on top of the stack.
-#define PUSHKS 0XD		//Inserts a constant string on top of the stack.
-#define PUSHAC 0XE		//Inserts a char from an array on top of the stack.
-#define PUSHAI 0XF		//Inserts an int from an array on top of the stack.
-#define PUSHAD 0X11		//Inserts a double from an array on top of the stack.
-#define PUSHAS 0X12		//Inserts a string from an array on top of the stack.
-#define POPC 0X13		//Pops data from the stack as a char.
-#define POPI 0X14		//Pops data from the stack as an int.
-#define POPD 0X15		//Pops data from the stack as a double.
-#define POPS 0X16		//Pops data from the stack as a string.
-#define POPAC 0X17		//Pops data from the stack as a char using the offset register.
-#define POPAI 0X18		//Pops data from the stack as a int using the offset register.
-#define POPAD 0X19		//Pops data from the stack as a double using the offset register.
-#define POPAS 0X1A		//Pops data from the stack as a string using the offset register.
-#define POPX 0X1B		//Pops from stack to pointer register (int).
-#define RDC 0X1C		//Reads a char into memory.
-#define RDI 0X1D		//Reads an int into memory.
-#define RDD 0X1E		//Reads a double into memory.
-#define RDS 0X1F		//Reads a string into memory.
-#define RDAC 0X20		//Reads a char into an array using the offset register.
-#define RDAI 0X21		//Reads a int into an array using the offset register.
-#define RDAD 0X22		//Reads a double into an array using the offset register.
-#define RDAS 0X23		//Reads a string into an array using the offset register.
-#define JMP 0X24		//Jumps indonditionally to a memory address.
-#define JEQ 0X25		//Jumps if the top of the stack is (==) 0.
-#define JNE 0X26		//Jumps if the top of the stack is different than (!=) 0.
-#define JGT 0X27		//Jumps if the top of the stack is greater than (>) 0.
-#define JGE 0X28		//Jumps if the top of the stack is greater or equal than (>=) 0.
-#define JLT 0X29 		//Jumps if the top of the stack is less than (<) 0.
-#define JLE 0X2A		//Jumps if the top of the stack is less or equal than (<=) 0.
-#define STX 0X2B		//Stores a variable in the pointer register.
-#define STKX 0X2C		//Stores a constant int in the pointer register.
-#define INC 0X2D		//Increases the value of a memory address by 1.
-#define RED 0X2E		//Decreases the value of a memory address by 1.
-#define ADD 0X2F		//Pops the two topmost numbers from the stack and adds them. The result is stored in the stack.
-#define SUB 0X30		//Pops the two topmost numbers from the stack and subtracts them. The result is stored in the stack.
-#define MUL 0X31		//Pops the two topmost numbers from the stack and multiplies them. The result is stored in the stack.
-#define DIV 0X32		//Pops the two topmost numbers from the stack and divides them. The result is stored in the stack.
-#define MOD 0X33		//Pops the two topmost numbers from the stack and divides them. The remainder is stored in the stack.
-#define CMP 0X34		//Compares 2 stack values by subtracting them and stores the result in the stack.
-#define DECC 0X35		// Declares a variable of type char
-#define DECI 0X36		//Declares a variable of type int
-#define DECD 0X37		//Declares a variable of type double
-#define DECS 0X38		// Declares a variable of type string
-#define DECAC 0X39		// Declares an array of type char
-#define DECAI 0X3A		// Declares an array of type int
-#define DECAD 0X3B		// Declares an array of type double
-#define DECAS 0X3C		// Declares an array of type string
+#define WR 0X1		//Writes a newline.
+#define WRC 0X2		//Writes a char.
+#define WRI 0X3		//Writes an int.
+#define WRD 0X4		//Writes a double.
+#define WRS 0X5		//Writes a string.
+#define WRAC 0X6		//
+#define WRAI 0X7		//
+#define WRAD 0X8		//
+#define WRAS 0X9		//
+#define WRKS 0XA		//
+#define PUSHC 0XB		//Inserts a char on top of the stack.
+#define PUSHI 0XC		//Inserts an int on top of the stack.
+#define PUSHD 0XD		//Inserts a double on top of the stack.
+#define PUSHS 0XE		//Inserts a string on top of the stack.
+#define PUSHKC 0XF		//Inserts a constant char on top of the stack.
+#define PUSHKI 0X10		//Inserts a constant int on top of the stack.
+#define PUSHKD 0X11		//Inserts a constant double on top of the stack.
+#define PUSHKS 0X12		//Inserts a constant string on top of the stack.
+#define PUSHAC 0X13		//Inserts a char from an array on top of the stack.
+#define PUSHAI 0X14		//Inserts an int from an array on top of the stack.
+#define PUSHAD 0X15		//Inserts a double from an array on top of the stack.
+#define PUSHAS 0X16		//Inserts a string from an array on top of the stack.
+#define POPC 0X17		//Pops data from the stack as a char.
+#define POPI 0X18		//Pops data from the stack as an int.
+#define POPD 0X19		//Pops data from the stack as a double.
+#define POPS 0X1A		//Pops data from the stack as a string.
+#define POPAC 0X1B		//Pops data from the stack as a char using the offset register.
+#define POPAI 0X1C		//Pops data from the stack as a int using the offset register.
+#define POPAD 0X1D		//Pops data from the stack as a double using the offset register.
+#define POPAS 0X1E		//Pops data from the stack as a string using the offset register.
+#define POPX 0X1F		//Pops from stack to pointer register (int).
+#define RDC 0X20		//Reads a char into memory.
+#define RDI 0X21		//Reads an int into memory.
+#define RDD 0X22		//Reads a double into memory.
+#define RDS 0X23		//Reads a string into memory.
+#define RDAC 0X24		//Reads a char into an array using the offset register.
+#define RDAI 0X25		//Reads a int into an array using the offset register.
+#define RDAD 0X26		//Reads a double into an array using the offset register.
+#define RDAS 0X27		//Reads a string into an array using the offset register.
+#define JMP 0X28		//Jumps indonditionally to a memory address.
+#define JEQ 0X29		//Jumps if the top of the stack is (==) 0.
+#define JNE 0X2A		//Jumps if the top of the stack is different than (!=) 0.
+#define JGT 0X2B		//Jumps if the top of the stack is greater than (>) 0.
+#define JGE 0X2C		//Jumps if the top of the stack is greater or equal than (>=) 0.
+#define JLT 0X2D		//Jumps if the top of the stack is less than (<) 0.
+#define JLE 0X2E		//Jumps if the top of the stack is less or equal than (<=) 0.
+#define STX 0X2F		//Stores a variable in the pointer register.
+#define STKX 0X30		//Stores a constant int in the pointer register.
+#define STY 0X31		//
+#define	STKY 0X32
+#define INC 0X33		//Increases the value of a memory address by 1.
+#define RED 0X34		//Decreases the value of a memory address by 1.
+#define ADD 0X35		//Pops the two topmost numbers from the stack and adds them. The result is stored in the stack.
+#define SUB 0X36		//Pops the two topmost numbers from the stack and subtracts them. The result is stored in the stack.
+#define MUL 0X37		//Pops the two topmost numbers from the stack and multiplies them. The result is stored in the stack.
+#define DIV 0X38		//Pops the two topmost numbers from the stack and divides them. The result is stored in the stack.
+#define MOD 0X39		//Pops the two topmost numbers from the stack and divides them. The remainder is stored in the stack.
+#define CMP 0X3A		//Compares 2 stack values by subtracting them and stores the result in the stack.
+#define DECC 0X3B		//Declares a char
+#define DECI 0X3C		//Declares an int
+#define DECD 0X3D		//Declares a double
+#define DECS 0X3E		//Declares a string
+#define DECAC 0X3F	//Declares an array of chars
+#define DECAI 0X40	//Declares an array of integers
+#define DECAD 0X41	//Declares an array of doubles
+#define DECAS 0X42	//Declares an array of strings
 
 #pragma endregion Mapa de Instrucciones a hexadecimal
 
-int main()
-{
-	Li Eli;
 
-	Eli.load("C:/Users/Helio Jimenez/Desktop/prueba.cea");
-	Eli.run();
+void Li::addVar(string hex)
+{
+	if (variables.find(hex) != variables.end()) {
+		addToCode(variables[hex]);
+	}
+	else {
+		//error variable doesnt exists
+	}
+}
+
+void Li::addToCode(unsigned int dir, int start)
+{
+	union {
+		unsigned int value;
+		char byte[4];
+	} u;
+	u.value = dir;
+	for (int i = start; i >= 0; i--)
+		code += (unsigned char)u.byte[i];
+}
+
+void Li::addToCode(unsigned int dir) {
+	addToCode(dir, 1);
+}
+
+bool Li::validateDirection(unsigned int test) {
+	return true;
+}
+
+int main (int argc, char* argv[])
+{
+	cout << argc << endl;
+
+	if (argc > 1 && argc <= 3) {
+		string source = argv[1];
+		string dest = argv[2];
+		Li test;
+		test.load(source, dest);
+	}
+	else {
+		cout << "Please provide source and destination params" << endl;
+	}
 
 	return 0;
+	//	Li Eli;
+	//
+	//	Eli.load("C:/Users/Helio Jimenez/Desktop/prueba.cea");
+	//	Eli.run();
+	//
+	//	return 0;
 }
+
 
 Li::Li()
 {
+	nextMemorySlot = 0;
+	currentByte = 0;
 }
 
 Li::~Li()
@@ -91,25 +144,199 @@ Li::~Li()
 
 //Carga el archivo para ser leido
 //Falta mejorarlo y verificar el identificador
-bool load(string archivo)
+bool load(string source, string destination)
 {
-	ifstream infile;
-	size_t length = 0;
 
-	infile.open(archivo, ios::in | ios::binary);
+	ofstream target(destination, ios::out | ios::binary);
+	ifstream sourceCode(source);
+	//write the identifier
+	target.write((char*)identifier.c_str(), identifier.length());
+	unsigned int intContainer = 0;
+	int intContainerSigned;
+	unsigned char charContainer;
+	double doubleContainer;
+	//start code section
 
-	infile.seekg(0, infile.end);
-	length = infile.tellg();
-	infile.seekg(0, infile.beg);
 
-	if (length < 13) {
-		cout << "FATAL ERROR: Min file size is 13 bytes" << endl;
-		return true;
-		//error Minimum file size is 13
+	while (sourceCode.is_open()) {
+		string hex = "";
+		sourceCode >> hex;
+		if (comandos.find(hex) != comandos.end())
+			switch (comandos[hex])
+			{
+			case HALT:
+				code += (unsigned char)comandos[hex];
+				sourceCode.close();
+				break;
+			case WR:
+				code += (unsigned char)comandos[hex];
+				break;
+			case WRC:
+			case WRI:
+			case WRD:
+			case WRAC:
+			case WRAI:
+			case WRAD:
+			case PUSHC:
+			case PUSHI:
+			case PUSHD:
+			case PUSHS:
+			case PUSHAC:
+			case PUSHAI:
+			case PUSHAD:
+			case POPC:
+			case POPI:
+			case POPD:
+			case POPS:
+			case POPAC:
+			case POPAI:
+			case POPAD:
+			case RDC:
+			case RDI:
+			case RDD:
+			case RDAC:
+			case RDAI:
+			case RDAD:
+			case STX:
+			case STY:
+			case INC:
+			case RED:
+			case WRS:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> hex;
+				addVar(hex);
+				break;
+			case WRAS:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> hex;
+				addVar(hex);
+				break;
+			case PUSHKC:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> charContainer;
+				addToCode((unsigned int)charContainer, 1);
+				break;
+			case PUSHKI:
+				break;
+			case PUSHKD:
+				break;
+			case PUSHKS:
+				break;
+			case PUSHAS:
+				break;
+			case POPAS:
+				break;
+			case POPX:
+				code += (unsigned char)comandos[hex];
+				break;
+			case RDS:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> hex;
+				addVar(hex);
+				break;
+			case RDAS:
+				break;
+			case JMP:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> intContainer;
+				if (validateDirection(intContainer))
+					addToCode(intContainer);
+				else {
+					//error direction not valid
+					sourceCode.putback(intContainer);
+				}
+				break;
+			case JEQ:
+				break;
+			case JNE:
+				break;
+			case JGT:
+				break;
+			case JGE:
+				break;
+			case JLT:
+				break;
+			case JLE:
+				break;
+			case STKX:
+			case STKY:
+				code += (unsigned char)comandos[hex];
+				sourceCode >> intContainer;
+				addToCode(intContainer);
+				break;
+			case ADD:
+			case SUB:
+			case MUL:
+			case DIV:
+			case MOD:
+			case CMP:
+				code += (unsigned char)comandos[hex];
+				break;
+			case DECC:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				nextMemorySlot += 1;
+				break;
+			case DECI:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				nextMemorySlot += 4;
+				break;
+			case DECD:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				nextMemorySlot += 8;
+				break;
+			case DECS:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				sourceCode >> intContainer;
+				nextMemorySlot += intContainer;
+				stringSize[hex] = intContainer;
+				break;
+			case DECAC:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				sourceCode >> intContainer;
+				nextMemorySlot += intContainer;
+				arraySize[hex] = intContainer;
+				break;
+			case DECAI:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				sourceCode >> intContainer;
+				nextMemorySlot += 4 * intContainer;
+				arraySize[hex] = intContainer;
+				break;
+			case DECAD:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				sourceCode >> intContainer;
+				nextMemorySlot += 8 * intContainer;
+				arraySize[hex] = intContainer;
+				break;
+			case DECAS:
+				sourceCode >> hex;
+				variables[hex] = nextMemorySlot;
+				sourceCode >> intContainer;
+				nextMemorySlot += 4 * intContainer;
+				arraySize[hex] = intContainer;
+				sourceCode >> intContainer;
+				nextMemorySlot += 4 * intContainer;
+				stringSize[hex] = intContainer;
+				//store array size in another list
+				break;
+			}
+
 	}
+	//calculate code segment size and data segment size
+	target.write((char*)&codeSize, sizeof(codeSize));
+	target.write((char*)&dataSize, sizeof(dataSize));
 
-	vector<unsigned char> oData(length);
-	infile.read((char*)&oData[0], length);
+	for (int i = 0; i < code.length(); i++) {
+		char* test = &code[i];
+		target.write(test, 1);
+	}
 }
 
 //Aqui debe de ir leyendo el archivo y guardar los comandos en una lista que despues se tranforman en bytes y exportarlo en un archivo .inz
